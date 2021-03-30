@@ -8,7 +8,8 @@ public class ArmorClickScript : MonoBehaviour
     [SerializeField]
     public Camera camera;
     public GameObject armorButtonsPNL;
-    public GameObject[] armorPlates;
+    public GameObject armorPlate;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -24,11 +25,17 @@ public class ArmorClickScript : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit))
             {
-                Destroy(hit.collider.gameObject);
+                hit.collider.gameObject.SetActive(false);
                 ArmorClicked();
+                
                 // the object identified by hit.transform was clicked
                 // do whatever you want
             }
+        }
+
+        if (armorPlate.activeSelf == false && armorButtonsPNL.activeSelf == false)
+        {
+            armorPlate.SetActive(true);
         }
     }
 

@@ -12,10 +12,7 @@ public class PlaneHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //for (int i = 0; i < 50; i++)
-        //{
-        //    AddArmor(Random.Range(0, 10));
-        //}
+        
     }
 
     // Update is called once per frame
