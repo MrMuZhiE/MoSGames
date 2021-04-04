@@ -19,6 +19,9 @@ public class PlaneHandler : MonoBehaviour
     public int damageMultiplier = 3;
     public int killNum = 10;
     public bool hasStarted = false;
+    public int roundsSurvived = 0;
+    public int testerNum = 0;
+    public bool startTest = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,11 @@ public class PlaneHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (testerNum < 100 && hasStarted == false && startTest == true)
+        {
+            hasStarted = true;
+            testerNum++;
+        }
         if (hasStarted == true)
         {
             FlightCalculator();
@@ -44,6 +52,7 @@ public class PlaneHandler : MonoBehaviour
 
     public void FlightCalculator()
     {
+        roundsSurvived++;
         int randHit = Random.Range(0, rollMax);
         int randHitArea = Random.Range(0, armorArray.Length);
         int randDamage = Random.Range(0, armorArray[randHitArea] + damageChance);
@@ -75,14 +84,17 @@ public class PlaneHandler : MonoBehaviour
 
         if (dmgNum > killNum)
         {
-            Debug.LogWarning("Player dead");
+
+            //for (int i = 0; i < damageArray.Length; i++)
+            //{
+            //    Debug.Log("location " + i + " has taken " + damageArray[i] + " damage");
+            //}
             DamageArrayResetter();
             hasStarted = !hasStarted;
+            Debug.Log(roundsSurvived);
+            roundsSurvived = 0;
         }
-        else
-        {
-            Debug.Log("Player not dead");
-        }
+        
     }
 
     public void DamageArrayResetter()
@@ -96,5 +108,10 @@ public class PlaneHandler : MonoBehaviour
     public void HasStartedSwitcher()
     {
         hasStarted = !hasStarted;
+    }
+
+    public void StartTestSwitcher()
+    {
+        startTest = !startTest;
     }
 }
