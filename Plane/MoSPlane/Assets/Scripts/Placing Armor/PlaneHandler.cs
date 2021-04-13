@@ -8,7 +8,7 @@ public class PlaneHandler : MonoBehaviour
     public int[] armorArray = new int[10]; //This armor array will keep track of where the armor has been placed. This will impact the probability that the plane is being shot down. 
                                            //https://drive.google.com/file/d/1qvycwF34yzFbsOf40-u97HuM0XQ3fR4d/view?usp=sharing
                                            //1 = 0, 2 = 1, etc
-    public int[] damageArray = new int[10];
+    public float[] damageArray = new float[10];
 
     public GameObject armorButtonsPNL;
     public int chanceToGetHit = 1, rollMax = 2; //chanceToGetHit is the number that has to be beaten by the generator in order for the plane to calculate a hit
@@ -16,12 +16,14 @@ public class PlaneHandler : MonoBehaviour
     
     public int damageChance = 2; //this is the number you add in order to calculate if the plane takes damage during a hit. Currently it adds to the amount of armor the plane has in the random.range function
                                  //making the top number X bigger than the amount of armor. If the number generated is bigger than the amount of armor it takes damage. 
-    public int damageMultiplier = 3;
-    public int killNum = 10;
+    public int damageMultiplier = 5;
+    public int killNum = 15;
     public bool hasStarted = false;
     public int roundsSurvived = 0;
     public int testerNum = 0;
     public bool startTest = false;
+    public int totalRounds = 0;
+    public bool hasShownAverage = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +42,12 @@ public class PlaneHandler : MonoBehaviour
         if (hasStarted == true)
         {
             FlightCalculator();
+        }
+        if (testerNum == 100)
+        {
+            int average = totalRounds / 100;
+            Debug.Log("This configurations average was " + average);
+            
         }
     }
 
@@ -60,15 +68,15 @@ public class PlaneHandler : MonoBehaviour
         {
             if (armorArray[randHitArea] < randDamage)
             {
-                damageArray[randHitArea] += 1;
+                damageArray[randHitArea] += 0.5f;
             }
         }
         
-        int dmgNum = 0;
+        float dmgNum = 0;
         
         for (int i = 0; i < damageArray.Length; i++)
         {
-            int dmgToAdd = 0;
+            float dmgToAdd = 0;
 
             if (i == 0 || i == 2)
             {
@@ -92,6 +100,7 @@ public class PlaneHandler : MonoBehaviour
             DamageArrayResetter();
             hasStarted = !hasStarted;
             Debug.Log(roundsSurvived);
+            totalRounds += roundsSurvived;
             roundsSurvived = 0;
         }
         
