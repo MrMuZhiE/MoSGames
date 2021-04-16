@@ -1957,17 +1957,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   armorArray: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
-  damageArray: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   armorButtonsPNL: {fileID: 893918809}
   chanceToGetHit: 1
   rollMax: 2
   damageChance: 2
-  damageMultiplier: 3
-  killNum: 10
+  damageMultiplier: 5
+  killNum: 15
   hasStarted: 0
   roundsSurvived: 0
   testerNum: 0
   startTest: 0
+  totalRounds: 0
+  hasShownAverage: 0
 --- !u!4 &892150717
 Transform:
   m_ObjectHideFlags: 0

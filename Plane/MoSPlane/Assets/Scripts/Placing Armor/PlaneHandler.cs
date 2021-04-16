@@ -8,7 +8,7 @@ public class PlaneHandler : MonoBehaviour
     public int[] armorArray = new int[10]; //This armor array will keep track of where the armor has been placed. This will impact the probability that the plane is being shot down. 
                                            //https://drive.google.com/file/d/1qvycwF34yzFbsOf40-u97HuM0XQ3fR4d/view?usp=sharing
                                            //1 = 0, 2 = 1, etc
-    public float[] damageArray = new float[10];
+    private float[] damageArray = new float[10];
 
     public GameObject armorButtonsPNL;
     public int chanceToGetHit = 1, rollMax = 2; //chanceToGetHit is the number that has to be beaten by the generator in order for the plane to calculate a hit
