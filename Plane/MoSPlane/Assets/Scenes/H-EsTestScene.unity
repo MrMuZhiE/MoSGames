@@ -1961,7 +1961,9 @@ MonoBehaviour:
   chanceToGetHit: 1
   rollMax: 2
   damageChance: 2
-  damageMultiplier: 5
+  damageMultiplier: 10
+  damageForNonCrit: 1
+  damageForCrit: 5
   killNum: 15
   hasStarted: 0
   roundsSurvived: 0
