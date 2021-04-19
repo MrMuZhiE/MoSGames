@@ -83,25 +83,28 @@ public class PlaneHandler : MonoBehaviour
 
         if (randHit >= chanceToGetHit)
         {
-            if (armorArray[randHitArea] == 0 && randHitArea != 0 && randHitArea != 2/*has no armor && is not critical*/)
+            if (armorArray[randHitArea] < randDamage)
             {
-                //Take normal damage
-                damageArray[randHitArea] += damageForNonCrit;
-            }
-            else if (/*has no armor && is critical*/armorArray[randHitArea] == 0 && (randHitArea == 0 || randHitArea == 2))
-            {
-                //Take enhanced damage
-                damageArray[randHitArea] += damageForCrit;
-            }
-            else if (/*is not critical*/randHitArea != 0 && randHitArea != 2)
-            {
-                //Take normal damage divided by amount of armor
-                damageArray[randHitArea] += (damageForNonCrit / armorArray[randHitArea]); 
-            }
-            else if (/*is critical*/randHitArea == 0 || randHitArea == 2)
-            {
-                //Take enhanced damage divided by armor
-                damageArray[randHitArea] += (damageForCrit / armorArray[randHitArea]);
+                if (armorArray[randHitArea] == 0 && randHitArea != 0 && randHitArea != 2/*has no armor && is not critical*/)
+                {
+                    //Take normal damage
+                    damageArray[randHitArea] += damageForNonCrit;
+                }
+                else if (/*has no armor && is critical*/armorArray[randHitArea] == 0 && (randHitArea == 0 || randHitArea == 2))
+                {
+                    //Take enhanced damage
+                    damageArray[randHitArea] += damageForCrit;
+                }
+                else if (/*is not critical*/randHitArea != 0 && randHitArea != 2)
+                {
+                    //Take normal damage divided by amount of armor
+                    damageArray[randHitArea] += (damageForNonCrit / armorArray[randHitArea]); 
+                }
+                else if (/*is critical*/randHitArea == 0 || randHitArea == 2)
+                {
+                    //Take enhanced damage divided by armor
+                    damageArray[randHitArea] += (damageForCrit / armorArray[randHitArea]);
+                }
             }
         }
 
@@ -109,7 +112,6 @@ public class PlaneHandler : MonoBehaviour
 
         for (int i = 0; i < damageArray.Length; i++)
         {
-            Debug.Log("location " + i + " has taken " + damageArray[i] + " damage");
             dmgNum += damageArray[i];          
         }
 
