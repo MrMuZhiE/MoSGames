@@ -11,6 +11,8 @@ public class PlaneHandler : MonoBehaviour
     private float[] damageArray = new float[10];
 
     public GameObject armorButtonsPNL;
+    
+    //Plane Stuff
     public int chanceToGetHit = 1, rollMax = 2; //chanceToGetHit is the number that has to be beaten by the generator in order for the plane to calculate a hit
                                                 //rollMax is the maximum number the generator can roll (the random.range runs on the top number being exclusive so if the numbers are 0,2 it can generate 1 or 0, but not 2)
 
@@ -22,6 +24,8 @@ public class PlaneHandler : MonoBehaviour
     public int killNum = 15;
     public bool hasStarted = false;
     public int roundsSurvived = 0;
+    
+    //Test stuff
     public int testerNum = 0;
     public bool startTest = false;
     public int totalRounds = 0;
